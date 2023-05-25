@@ -1,3 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish&family=Nanum+Gothic:wght@400;700;800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@-webkit-keyframes FadeIn {
+  0% {
+    opacity: 0.1;
+    transform: translatey(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+@keyframes FadeIn {
+  0% {
+    opacity: 0.1;
+    transform: translatey(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+body {
+  @apply bg-gradient-to-b from-[#15162c] to-[#2e026d] text-slate-100 w-screen h-screen overflow-x-hidden;
+}
+
+#__next {
+  height: calc(100vh - 80px);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Mulish";
+}
+
+.fade {
+  -webkit-animation: FadeIn 300ms ease-in;
+  animation: FadeIn 300ms ease-in;
+}
+
+.stroke {
+  padding-bottom: 15px;
+}
+.stroke:hover::after {
+  width: 100%;
+}
+.stroke::after {
+  @apply bg-purple-300;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0;
+  content: ".";
+  color: transparent;
+  height: 1px;
+  transition: all 0.5s;
+}
+.stroke::before {
+  transition: all 0.5s;
+}
+.fancy-button::before,
+.fancy-button::after {
+  right: 0;
+  bottom: 0;
+  background-color: #a855f7;
+}
+.fancy-button::before {
+  width: 100%;
+  height: 2px;
+  transform: translateX(-100%);
+}
+.fancy-button::after {
+  width: 2px;
+  height: 100%;
+  transform: translateY(100%);
+}
+.fancy-button,
+.fancy-button > span {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  line-height: 24px;
+}
+.fancy-button > span {
+  display: flex;
+  padding: 10px;
+}
+.fancy-button::before,
+.fancy-button::after,
+.fancy-button > span::before,
+.fancy-button > span::after {
+  content: "";
+  position: absolute;
+  transition: transform 0.5s ease;
+}
+.fancy-button span::before,
+.fancy-button span::after {
+  left: 0;
+  top: 0;
+  background-color: #a855f7;
+}
+.fancy-button span::before {
+  width: 100%;
+  height: 2px;
+  transform: translateX(100%);
+}
+.fancy-button span::after {
+  width: 2px;
+  height: 100%;
+  transform: translateY(-100%);
+}
+.fancy-button:hover::before,
+.fancy-button:hover::after,
+.fancy-button:hover > span::before,
+.fancy-button:hover > span::after {
+  transform: translate(0, 0);
+}
