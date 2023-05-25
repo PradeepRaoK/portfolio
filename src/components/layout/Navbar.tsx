@@ -102,9 +102,9 @@ export const NavBar = () => {
         <div className="hidden mt-10 md:flex">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>
+          <NavLink to="/skills">Skills</NavLink>
           <NavLink to="/projects">Projects</NavLink>
           <NavLink to="/contact">Contact</NavLink>
-          <NavLink to="/guestbook">Guestbook</NavLink>
         </div>
       </div>
     </nav>
