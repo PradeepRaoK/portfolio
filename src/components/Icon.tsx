@@ -13,7 +13,7 @@ interface IconProps {
 }
 
 const defaultStyles =
-  "mb-1 h-10 fill-purple-500 hover:fill-purple-300 transition ease-in-out duration-300";
+  "mb-1 h-8 fill-purple-500 hover:fill-purple-300 transition ease-in-out duration-300";
 
 const Icon = ({ icon, className }: IconProps) => {
   return (

@@ -38,6 +38,15 @@ const MobileNav = ({
           About
         </NextLink>
         <NextLink
+          href="/skills"
+          className={`text-xl font-normal my-4 ${
+            router.asPath === "/skills" ? "text-purple-500" : ""
+          }`}
+          onClick={() => setOpen(!open)}
+        >
+          Skills
+        </NextLink>
+        <NextLink
           href="/projects"
           className={`text-xl font-normal my-4 ${
             router.asPath === "/projects" ? "text-purple-500" : ""
@@ -54,15 +63,6 @@ const MobileNav = ({
           onClick={() => setOpen(!open)}
         >
           Contact
-        </NextLink>
-        <NextLink
-          href="/guestbook"
-          className={`text-xl font-normal my-4 ${
-            router.asPath === "/guestbook" ? "text-purple-500" : ""
-          }`}
-          onClick={() => setOpen(!open)}
-        >
-          Guestbook
         </NextLink>
       </div>
     </div>
