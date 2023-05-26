@@ -58,6 +58,7 @@ const Contact: NextPage = () => {
           />
         </div>
       </div>
+      <div className="mt-6 text-center text-1xl text-white">Developed with ❤️ by <a href="https://github.com/PradeepRaoK" className='bg-clip-text bg-gradient-to-r from-cyan-200 to-cyan-400 text-transparent'>Pradeep Rao K</a></div>
     </>
   );
 };

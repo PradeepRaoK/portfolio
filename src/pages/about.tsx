@@ -37,7 +37,7 @@ const About: NextPage = () => {
 
       <div className="container mx-auto max-w-2xl px-2">
         <h1 className="text-4xl text-purple-300">About me</h1>
-        <p className="mt-2">
+        <p className="m-2">
         I'm a 20-year-old computer science and engineering undergraduate at NMAMIT Nitte in Karnataka, India. I'm passionate about programming, web, and mobile app development, bringing ideas to life through coding. Collaboration is my driving force, thriving in environments where innovative solutions are born from shared ideas. In my free time, I enjoy immersing myself in captivating movies, and web series, as well as watching cricket matches. With expertise in HTML, CSS, JavaScript, and experience in React, I continuously update my skills to stay current with the latest technologies. My goal is to contribute to impactful projects that positively influence people's lives.
         </p>
         <h2 className="text-3xl text-purple-300 mt-4">Education</h2>
