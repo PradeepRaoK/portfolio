@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import type { NextPage } from "next";
 
 import { IconLink } from "../components/IconLink";
 import { useForm, ValidationError } from '@formspree/react'; 
+
 
 const Contact: NextPage = () => {
   const [state, handleSubmit] = useForm("xbjeezyj");
@@ -11,7 +11,7 @@ const Contact: NextPage = () => {
 
       <div className="container mx-auto max-w-md px-2">
         <h1 className="text-4xl text-purple-300">Contact me</h1>
-        <form onSubmit={handleSubmit} className='p-4 grid text-slate-200 mt-2'>
+        <form onSubmit={handleSubmit as (event:React.FormEvent<HTMLFormElement>)=>void} className='p-4 grid text-slate-200 mt-2'>
             <div>
               <input className='bg-slate-600/40 my-2 rounded-md h-12 w-full border-2 px-4'
               id="name"

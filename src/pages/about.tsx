@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from "next";
 import {motion} from 'framer-motion'
 
@@ -51,7 +50,7 @@ const About: NextPage = () => {
                   key={index}
                   className={`mt-4 ml-2 border-l-2 pl-2 py-2`}
                 >
-                  <h1 className="text-lg text-slate-200 m-0 text-left">{item.name}</h1>
+                  <h1 className="text-lg text-white m-0 text-left">{item.name}</h1>
                   <p className="w-full text-sm text-slate-400/50 gap-4 flex">
                     <span>{item.timeline}</span>
                     <span>{item.percentage}</span>
