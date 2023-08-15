@@ -8,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css'
 
 const Contact: NextPage = () => {
   const [state, handleSubmit] = useForm("xbjeezyj");
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,9 +22,21 @@ const Contact: NextPage = () => {
   };
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (formData.name.trim() === "" || formData.email.trim() === "" || formData.message.trim() === "") {
+      toast.error('Please fill in all fields before submitting.', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return; // Exit the function if form data is empty
+    }
     await handleSubmit(event);  
     if (state.succeeded) {
-      setIsFormSubmitted(true);
       toast('Form submitted successfully!', {
         position: "bottom-right",
         autoClose: 5000,
@@ -41,9 +52,6 @@ const Contact: NextPage = () => {
           email: "",
           message: ""
         });
-        setTimeout(() => {
-          setIsFormSubmitted(false);
-        }, 5000);
     }
   };
   return (
