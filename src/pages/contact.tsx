@@ -20,7 +20,7 @@ const Contact: NextPage = () => {
       [name]: value
     }));
   };
-  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>):Promise<void> => {
     event.preventDefault();
     if (formData.name.trim() === "" || formData.email.trim() === "" || formData.message.trim() === "") {
       toast.error('Please fill in all fields before submitting.', {
