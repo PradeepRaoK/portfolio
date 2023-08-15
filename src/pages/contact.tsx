@@ -35,23 +35,27 @@ const Contact: NextPage = () => {
       });
       return; // Exit the function if form data is empty
     }
-    await handleSubmit(event);  
-    if (state.succeeded) {
-      toast('Form submitted successfully!', {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        });
-        setFormData({
-          name: "",
-          email: "",
-          message: ""
-        });
+    try{
+      await handleSubmit(event);
+      if (state.succeeded) {
+        toast('Form submitted successfully!', {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          });
+          setFormData({
+            name: "",
+            email: "",
+            message: ""
+          });
+      }
+    }catch(error){
+      console.error("Form submission error:", error);
     }
   };
   return (
