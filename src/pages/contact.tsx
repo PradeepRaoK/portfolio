@@ -2,22 +2,64 @@ import type { NextPage } from "next";
 
 import { IconLink } from "../components/IconLink";
 import { useForm, ValidationError } from '@formspree/react'; 
-
+import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 const Contact: NextPage = () => {
   const [state, handleSubmit] = useForm("xbjeezyj");
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    await handleSubmit(event);  
+    if (state.succeeded) {
+      setIsFormSubmitted(true);
+      toast('Form submitted successfully!', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+        setFormData({
+          name: "",
+          email: "",
+          message: ""
+        });
+        setTimeout(() => {
+          setIsFormSubmitted(false);
+        }, 5000);
+    }
+  };
   return (
     <>
 
       <div className="container mx-auto max-w-md px-2">
         <h1 className="text-4xl text-purple-300">Contact me</h1>
-        <form onSubmit={handleSubmit as (event:React.FormEvent<HTMLFormElement>)=>void} className='p-4 grid text-slate-200 mt-2'>
+        <form onSubmit={handleFormSubmit} className='p-4 grid text-slate-200 mt-2'>
             <div>
               <input className='bg-slate-600/40 my-2 rounded-md h-12 w-full border-2 px-4'
               id="name"
               type="text" 
               name="name"
               placeholder='Name'
+              value={formData.name}
+        onChange={handleInputChange}
             /></div>
             <div>
               <input className='bg-slate-600/40 my-2 rounded-md h-12 w-full border-2 px-4'
@@ -25,6 +67,8 @@ const Contact: NextPage = () => {
               type="email" 
               name="email"
               placeholder='Email'
+              value={formData.email}
+        onChange={handleInputChange}
             /></div>
             <ValidationError 
               prefix="Email" 
@@ -36,6 +80,8 @@ const Contact: NextPage = () => {
               id="message"
               name="message"
               placeholder='Message'
+              value={formData.message}
+        onChange={handleInputChange}
             /></div>
             <ValidationError 
               prefix="Message" 
@@ -44,6 +90,18 @@ const Contact: NextPage = () => {
             />
             <button className='bg-gradient-to-t from-indigo-700 to-blue-500 rounded-md text-lg font-semibold active:bg-violet-900 active:scale-[0.95] transition-all duration-100 h-12' type="submit" disabled={state.submitting}>Submit</button>
           </form>
+          <ToastContainer
+              position="bottom-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+            />
           <div className="flex flex-row justify-center mt-4 px-2 md:px-0">
           <IconLink
             icon="linkedin"
